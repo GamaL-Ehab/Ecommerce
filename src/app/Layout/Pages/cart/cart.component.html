@@ -1,0 +1,40 @@
+@if(totalPrice !== 0){
+    <section class="dark:text-white p-5">
+        <div class="p-5 flex flex-wrap justify-between items-end bg-gray-200 dark:bg-gray-700 rounded-2xl">
+         <div>
+            <h1 class="text-4xl font-semibold first-letter:text-main">Cart Items</h1>
+            <p class="text-lg font-semibold">Total Price: {{totalPrice}}</p> 
+         </div>  
+         <div>
+            <button (click)="clearCart()" class="p-1 btn-danger">Clear Cart</button>
+            <button (click)="checkOut()" class="btn-main m-2 py-4 font-semibold">Check Out</button>
+         </div>
+        </div>
+    
+            @for(item of cartItems ; track $index){
+                <div class="p-5">
+                    <div class="flex flex-wrap items-center rounded-2xl bg-gray-200 dark:bg-gray-700">
+                        <div class="md:w-1/6 p-3">
+                            <img [src]="item.product.imageCover" [alt]="item.product.title" class="rounded-lg">
+                        </div>
+                        <div class="md:w-4/6  p-3">
+                            <h2 class="text-3xl font-semibold">{{item.product.title}}</h2>
+                            <h3 class="text-lg font-semibold py-3">{{item.price}} EGP</h3>
+                            <button (click)="removeCartItem(item.product.id)" class="p-1 btn-danger"><i class="fa fa-trash"></i> Remove</button>
+                        </div>
+                        <div class="md:w-1/6 p-3 space-x-2 font-semibold">
+                            <button (click)="updateQuantity(item.product.id , item.count=item.count-1)" class="btn-main-outline">-</button>
+                            <span class="text-xl ">{{item.count}}</span>
+                            <button (click)="updateQuantity(item.product.id , item.count=item.count+1)" class="btn-main-outline">+</button>
+                        </div>
+                    </div>
+                </div>
+            }
+    </section>
+}
+@else{
+    <div class="m-auto w-1/2 pt-12">
+        <h2 class="text-5xl dark:text-white text-center py-12 bg-gray-200 dark:bg-gray-700 font-semibold first-letter:text-main rounded-2xl">Your Cart Is Empty!</h2>
+    </div>
+}
+

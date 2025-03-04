@@ -1,0 +1,39 @@
+<section class="flex justify-center items-center px-10 py-28 lg:py-48">
+    <form [formGroup]="loginForm" (ngSubmit)="submitLogin()" class="w-full lg:w-1/2 m-auto bg-gray-100 dark:bg-gray-900 p-5 rounded-2xl">
+        <div class="mb-6">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><i class="fa-solid fa-envelope text-main"></i> Email address</label>
+            <input formControlName="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full focus:ring-main focus:border-main p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="john.doe@company.com"/>
+            <div class="text-red-600 px-1">
+                @if(loginForm.get('email')?.touched){
+                    @if(loginForm.get('email')?.errors?.['required']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> Email is required.</p>
+                    }
+                    @else if(loginForm.get('email')?.errors?.['email']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> Invalid email.</p>
+                    }
+                }
+            </div>
+        </div> 
+        <div class="mb-6">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><i class="fa-solid fa-key text-main"></i> Password</label>
+            <input formControlName="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full focus:ring-main focus:border-main p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="•••••••••"/>
+            <p routerLink="/forgotPass" class="text-blue-700 underline text-right px-1 cursor-pointer">Forgot Password?</p>
+            <div class="text-red-600 px-1">
+                @if(loginForm.get('password')?.touched){
+                    @if(loginForm.get('password')?.errors?.['required']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> Password is required.</p>
+                    }
+                    @else if(loginForm.get('password')?.errors?.['pattern']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> Invalid Password.</p>
+                    }
+                }
+            </div>
+        </div> 
+        <div class="flex flex-wrap justify-between items-center">
+            <button type="submit" class="btn-main font-semibold">Login</button>
+            <span class="dark:text-white text-black pt-2">Don't have an account? <span routerLink="/register" class="text-main cursor-pointer underline">Register Now</span></span>
+        </div>
+
+    </form>
+</section>
+

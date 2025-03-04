@@ -1,0 +1,25 @@
+<section class="dark:text-white p-5">
+        <h1 class="text-center text-5xl font-semibold dark:text-white underline first-letter:text-main">Wish List</h1> 
+        @if(wishProducts){
+            @for(item of wishProducts ; track $index){
+                <div class="p-5">
+                    <div class="flex flex-wrap items-center rounded-2xl bg-gray-200 dark:bg-gray-700">
+                        <div class="md:w-1/6 p-3">
+                            <img [src]="item.imageCover" [alt]="item.title" class="rounded-lg">
+                        </div>
+                        <div class="md:w-4/6  p-3">
+                            <h2 class="text-3xl font-semibold">{{item.title}}</h2>
+                            <h3 class="text-lg font-semibold py-3">{{item.price}} EGP</h3>
+                            <button (click)="removeProduct(item.id)" class="btn-danger p-1"><i class="fa fa-trash"></i> Remove</button>
+                        </div>
+                        <div>
+                            <button (click)="addToCart(item.id)" class="btn-main">
+                                Add To Cart +
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    
+</section>

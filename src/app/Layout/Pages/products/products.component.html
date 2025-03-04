@@ -1,0 +1,57 @@
+<form class="w-1/2 m-auto">
+    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            </svg>
+        </div>
+        <input type="search" id="search"
+            class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main"
+            placeholder="Search" />
+    </div>
+</form>
+
+
+<div class="flex flex-wrap">
+    @for(product of productsList ; track $index){
+    <div class="w-full md:w-1/3 lg:w-1/4 xl:w-1/5 py-5 px-12 md:p-5">
+        <div
+            class="cursor-pointer h-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 hover:shadow-main hover:scale-101 duration-300">
+            <div [routerLink]="['/productDetails', product._id]">
+                <div>
+                    <img class="rounded-t-lg" [src]="product.imageCover" [alt]="product.title" />
+                </div>
+                <div class="p-5">
+                    <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        {{ product.category.name }}
+                    </h3>
+                    <h2 class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                        {{ product.title.split(" ").slice(0, 2).join(" ") }}
+                    </h2>
+                    <div class="dark:text-white flex justify-between">
+                        <span>{{ product.price }} EGP</span>
+                        <span><i class="fa fa-star text-yellow-500"></i>
+                            {{ product.ratingsAverage }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 pb-5 flex justify-between items-center">
+                <button (click)="addProductToCart(product.id)"
+                    class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-main hover:bg-main/80 rounded-lg">
+                    Add To Cart +
+                </button>
+                <i (click)="addProductToWishlist(product.id)"
+                    class="fa fa-heart dark:text-white text-xl hover:text-red-600"></i>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<ul class="flex justify-center space-x-2 py-5">
+    <li (click)="changePage('1')" class="btn-main-outline">1</li>
+    <li (click)="changePage('2')" class="btn-main-outline">2</li>
+</ul>

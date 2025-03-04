@@ -1,0 +1,21 @@
+<section>
+    <div class="dark:text-white m-auto text-center">
+    <h1 class="text-center text-5xl font-semibold dark:text-white underline first-letter:text-main">All Brands</h1>
+    <div class="flex flex-wrap w-3/4 m-auto my-5">
+        @for(c of categories ; track $index){
+            <div class="md:w-1/4 p-3">
+                <div class="border">
+                    <div>
+                        <img [src]="c.image" [alt]="c.slug" class="object-cover w-full">
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-semibold bg-white text-black">
+                            {{c.name}}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    </div>
+</section>

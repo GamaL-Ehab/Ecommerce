@@ -1,0 +1,15 @@
+<section class="dark:text-white">
+    <h1 class="text-5xl text-center first-letter:text-main font-semibold border-b border-main ">My Orders</h1>
+    <div class="flex flex-wrap my-5">
+        @for(o of orders ; track $index){
+            <div class="w-1/2 md:w-1/4 p-3 m-auto sm:m-0 font-semibold">
+                <div class="bg-gray-200 dark:bg-gray-700 p-5 rounded-2xl">
+                    <h2>Order Id: {{o.id}}</h2>
+                    <h3>Payment Method: {{o.paymentMethodType}}</h3>
+                    <h4>Total Price: {{o.totalOrderPrice}}</h4>
+                    <h5>Order Date: {{o.updatedAt}}</h5>
+                </div>
+            </div>
+        }
+    </div>
+</section>

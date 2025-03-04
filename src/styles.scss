@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme{
+    --color-main: rgb(65, 179, 162);
+}
+
+@utility btn-main{
+    color: white;
+    background: rgb(65, 179, 162);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: solid 2px rgb(65, 179, 162);
+    transition: 200ms;
+    cursor: pointer;
+    
+    @variant hover{
+        background: transparent;
+        color: rgb(65, 179, 162);
+    }
+
+    @variant dark{
+        @variant hover{
+            color: white;
+        }
+    }
+}
+
+@utility btn-main-outline{
+    color: black;
+    background: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: solid 2px rgb(65, 179, 162);
+    transition: 200ms;
+    cursor: pointer;
+
+    @variant hover{
+        background: rgb(65, 179, 162);
+        color: white;
+    }
+
+    @variant dark{
+        color:white;
+    }
+}
+
+@utility btn-danger{
+    border: solid red 1px;
+    border-radius: 10px;
+    transition: 300ms;
+    cursor: pointer;
+
+    @variant hover{
+        background: red;
+        color: white;
+    }
+}
+
+body{
+    padding-top: 5rem;
+}

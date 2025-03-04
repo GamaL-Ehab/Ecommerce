@@ -1,0 +1,56 @@
+<section class="dark:text-white flex flex-col justify-center items-center p-10">
+    <h1 class="text-3xl sm:text-5xl font-bold first-letter:text-main border-b border-main ">Check Out: </h1>
+
+    <form [formGroup]="checkOutForm" class="w-full lg:w-1/2 m-auto bg-gray-100 dark:bg-gray-900 p-5 rounded-2xl my-10">
+        <div class="mb-6">
+            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><i class="fa-solid fa-city text-main"></i> City:</label>
+            <input formControlName="city" type="text" id="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full focus:ring-main focus:border-main p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Ex: Cairo"/>
+            <div class="text-red-600 px-1">
+                @if(checkOutForm.get('city')?.touched){
+                    @if(checkOutForm.get('city')?.errors?.['required']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> City is required.</p>
+                    }
+                    @else if(checkOutForm.get('city')?.errors?.['minlength']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> City name must be 3 characters at least.</p>
+                    }
+                }
+            </div>
+        </div> 
+        <div class="mb-6">
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><i class="fa-solid fa-phone text-main"></i> Phone:</label>
+            <input formControlName="phone" type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full focus:ring-main focus:border-main p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="01234567891"/>
+            <div class="text-red-600 px-1">
+                @if(checkOutForm.get('phone')?.touched){
+                    @if(checkOutForm.get('phone')?.errors?.['required']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> phone is required.</p>
+                    }
+                    @else if(checkOutForm.get('phone')?.errors?.['pattern']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> Invalid phone number.</p>
+                    }
+                }
+            </div>
+        </div> 
+        <div class="mb-6">
+            <label for="details" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><i class="fa-solid fa-location-dot text-main"></i> Details:</label>
+            <textarea formControlName="details" type="text" id="details" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full focus:ring-main focus:border-main p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Ex: street, apartment, floor."></textarea>
+            <div class="text-red-600 px-1">
+                @if(checkOutForm.get('details')?.touched){
+                    @if(checkOutForm.get('details')?.errors?.['required']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> Details is required.</p>
+                    }
+                    @else if(checkOutForm.get('details')?.errors?.['minlength']){
+                        <p><i class="fa-solid fa-circle-exclamation"></i> Details must be 10 characters at least.</p>
+                    }
+                }
+            </div>
+        </div> 
+
+        
+        <div class="py-5 flex justify-center items-center gap-5 font-semibold">
+            <button (click)="cashOrder()" class="btn-main py-3 w-52">Cash On Delivery</button>
+            <button (click)="onlineOrder()" class="btn-main py-3 w-52">Pay With Card</button>
+        </div>  
+    </form>
+
+</section>
+
