@@ -8,12 +8,8 @@ import { RegisterComponent } from './Layout/Pages/register/register.component';
 import { ProductDetailsComponent } from './Layout/Additions/product-details/product-details.component';
 import { loginGuard } from './Shared/Guards/login/login.guard';
 import { backToLoginGuard } from './Shared/Guards/backToLogin/back-to-login.guard';
-import { ForgotPasswordComponent } from './Layout/Additions/forgot-password/forgot-password.component';
-import { ResetCodeComponent } from './Layout/Additions/reset-code/reset-code.component';
-import { ResetPasswordComponent } from './Layout/Additions/reset-password/reset-password.component';
 import { SettingsComponent } from './Layout/Pages/settings/settings.component';
-import { CheckOutComponent } from './Layout/Additions/check-out/check-out.component';
-import { AllOrdersComponent } from './Layout/Additions/all-orders/all-orders.component';
+
 
 export const routes: Routes = [
     {path:'', redirectTo:'home', pathMatch:"full"},
