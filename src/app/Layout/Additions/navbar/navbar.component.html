@@ -4,17 +4,17 @@
         <i class="fa fa-shopping-cart text-main text-3xl"></i>
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">FreshCart</span>
     </a>
-    <div class="flex flex-wrap md:order-2 space-x-3 rtl:space-x-reverse items-center">
+    <div class="flex flex-wrap md:order-2 gap-x-3 rtl:space-x-reverse items-center">
         @if(!isLogin){
           <button type="button" class="sm:hidden flex items-center cursor-pointer justify-center size-8 bg-white rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span class="sr-only">Open user menu</span>
             <i class="text-4xl rounded-full fa fa-circle-user text-main"></i>
           </button>
           <!-- Dropdown menu -->
-          <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+          <div class="z-50 p-3 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
             <ul class="py-2 flex flex-col gap-2" aria-labelledby="user-menu-button">
               <button routerLink="login" type="button" class="btn-main py-1 hover:bg-main/90 hover:text-white rounded-lg">Login</button>
-              <button routerLink="register" type="button" class="btn-main py-1 rounded-lg">Register</button>
+              <button routerLink="register" type="button" class="btn-main-outline py-1 rounded-lg">Register</button>
             </ul>
           </div>
           <button routerLink="login" type="button" class="btn-main py-1 hover:bg-main/90 hover:text-white hidden sm:block">Login</button>
