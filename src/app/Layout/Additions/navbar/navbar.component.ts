@@ -27,7 +27,10 @@ export class NavbarComponent implements OnInit{
             this.userName = res.decoded.name;
             this.isLogin = true;
           }, 
-          error : err => {_Router.navigate(['login'])}
+          error : err => {
+            _Router.navigate(['login']),
+            localStorage.removeItem('token')
+          }
         })
         
       }else{
